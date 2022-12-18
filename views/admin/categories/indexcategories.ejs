@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../../partials/header') %>
+  </head>
+  <body>
+    <%- include('../../partials/navbar') %>
+    <div class="container">
+      <hr />
+      <h1>Categorias</h1>
+      <hr />
+      <a class="btn btn-primary" href="/admin/categories/new"
+        >Criar Categoria</a
+      >
+      <br /><br />
+      <table class="table table-bordered" >
+        <thead>
+          <tr>
+            <!--tr: linha -->
+            <th>ID</th>
+            <!--th: coluna -->
+            <th>Titulo</th>
+            <th>Slug</th>
+            <th style="width: 35vh;">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% categories.forEach(categorie => { %>
+          <tr>
+            <th><%= categorie.id %></th>
+            <th><%= categorie.title %></th>
+            <th><%= categorie.slug%></th>
+            <th>
+              <!--'this':passa o componente que esta realizando a ação -->
+              <form
+                onsubmit="confirmarDelete(event,this) "
+                action="/categories/delete"
+                method="post"
+                style="display: inline"
+              > <!--Truque para enviar um delete para o banco de dados -->           
+              <input type="hidden" id="id" name="id" value="<%= categorie.id %> " />
+              <a href="/admin/categories/edit/<%= categorie.id %> " style="margin-right: 47px" class="btn btn-danger">Editar</a>
+                <button class="btn btn-danger">Excluir</button>
+              </form>
+            </th>
+          </tr>
+          <%})%>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function confirmarDelete(event, form) {
+        event.preventDefault();
+        let confirmacao = confirm("Deseja realmente excluir essa categoria");
+        if (confirmacao) {
+          form.submit();
+          window.reload()
+        } else {
+          console.log("N deletou");
+        }
+      }
+
+    </script>
+  </body>
+  <%- include('../../partials/footer') %>
+</html>

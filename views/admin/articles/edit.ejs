@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../../partials/header') %> 
+  </head>
+  <body>
+    <%- include('../../partials/navbar') %>
+    <div class="container">
+        <br><br>
+      <div class="card" >
+        <div class="card-header">
+            <h2>Editar Artigo</h2>
+        </div>
+        <div class="card-body">
+          <form method="post" action="/article/saveedit">
+            <input type="hidden" name="id" value="<%=article.id%>">
+            <input
+              type="text"
+              name="title"
+              class="form-control"
+              placeholder="Defina o titulo do artigo"
+              required
+              value="<%= article.tltle %> "
+            />
+            <br>
+            <textarea id="article" class="form-control" name="textarticle"  cols="80" rows="10">
+                <%-article.body%> 
+            </textarea>
+            <br>
+            <select name="categories" id=""  class="form-control" value="21">
+              <option disabled value="">selecione uma categoria</option>
+              <%categories.forEach(({id,title})=>{%>
+                  <option
+                  <% if(article.categoryId==id){%>
+                    selected
+                  <%}%>  
+                  value="<%= id %>"><%= title %></option>
+              <% })%>   
+            </select>
+            <br>
+            <button style="margin: 10px" class="btn btn-primary">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <%- include('../../partials/footer') %>
+<script src="/tinymce/js/tinymce/tinymce.min.js"></script>
+<script>
+  tinymce.init({
+    language:'pt_BR',
+    selector:'#article',
+    plugins:[
+      'table','preview','wordcount' 
+    ]
+  })
+</script>
+<script>
+
+</script>
+</html>

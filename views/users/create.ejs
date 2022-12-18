@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/header') %>
+  </head>
+  <body>
+    <% if(admin){%>
+      <%- include('../partials/navbar') %>
+      <%}else{ %>
+      <%} %> 
+    <br />
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Cadatrar Usuario</h2>
+            </div>
+            <div class="card-body">
+                <form method="post"
+                <% if(admin){%>
+                  action="/admin/create"
+                  <%}else{ %>
+                    action="/createuser"
+                  <%} %>
+                >
+                    <label for="email">Email</label>
+                    <input name='email' id="email" type="text" class="form-control" required>
+                    <label for="Senha">Senha</label>
+                    <input name='senha' id="senha" type="password" class="form-control" required>
+                    <% if(admin){%>
+                      <label for="tipo">Tipo do Usuario</label>
+                      <select  id='tipo'class="form-control" name="tipo" id="" style="width: 40vh;">
+                        <option disabled selected value="">Selecione</option>
+                        <option value="admin">Admin</option>
+                        <option value="usuario">Usuario</option>
+                    </select>
+                      <%} %>
+                   
+            </div>
+            <div class="card-footer">
+          <button class="btn btn-primary">Cadastrar</button>
+            </div>
+        </form>
+        </div>
+    </div>
+  </body>
+  <%- include('../partials/footer') %>
+</html>

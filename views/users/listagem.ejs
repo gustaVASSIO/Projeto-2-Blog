@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/header') %>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <br />
+    <div class="container">
+        <hr />
+        <h1>Categorias</h1>
+        <hr />
+        <a class="btn btn-primary" href="/admin/adduser"
+          >Criar Usuario</a
+        >
+        <br /><br />
+        <table class="table table-bordered" >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tipo</th>
+              <th>Email</th>
+              <th style="width: 35vh;">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach(user => { %>
+            <tr>
+              <th><%= user.id %></th>
+              <th><%= user.tipo %></th>
+              <th><%= user.email%></th>
+            </tr>
+            <%})%>
+          </tbody>
+        </table>
+      </div>
+  </body>
+  <%- include('../partials/footer') %>
+</html>

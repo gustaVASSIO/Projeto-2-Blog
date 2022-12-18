@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../../partials/header') %> 
+  
+  </head>
+  <body>
+    <%- include('../../partials/navbar') %>
+    <div class="container">
+        <br><br>
+      <div class="card" style="width: 120vh;">
+        <div class="card-header">
+            <h2>Editar Categoria</h2>
+        </div>
+        <div class="card-body">
+          <form method="post" action="/categories/saveedit">
+            <input type="hidden" name="id" value="<%=category.id%>"> 
+            <input
+            value="<%= category.title %>"
+              type="text"
+              name="title"
+              class="form-control"
+              required
+            />
+            <button style="margin: 10px" class="btn btn-primary">Editar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <%- include('../../partials/footer') %>
+
+</html>

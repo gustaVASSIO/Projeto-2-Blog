@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../../partials/header') %> 
+  
+  </head>
+  <body>
+    <%- include('../../partials/navbar') %>
+    <div class="container">
+        <br><br>
+      <div class="card" style="width: 120vh;">
+        <div class="card-header">
+            <h2>Cadastrar Categoria</h2>
+        </div>
+        <div class="card-body">
+          <form method="post" action="/categories/save">
+            <input
+              type="text"
+              name="title"
+              class="form-control"
+              placeholder="Defina o titulo da categoria"
+              required
+            />
+            <button style="margin: 10px" class="btn btn-primary">Cadastrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <%- include('../../partials/footer') %>
+
+</html>

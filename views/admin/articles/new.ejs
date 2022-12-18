@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../../partials/header') %> 
+  </head>
+  <body>
+    <%- include('../../partials/navbar') %>
+    <div class="container">
+        <br><br>
+      <div class="card" >
+        <div class="card-header">
+            <h2>Cadastrar Artigo</h2>
+        </div>
+        <div class="card-body">
+          <form method="post" action="/article/save">
+            <h3><label for="title">Titulo</label></h3>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              class="form-control"
+              placeholder="Defina o titulo do artigo"
+              required
+            />
+            <br>
+            <textarea id="article" class="form-control" name="textarticle" placeholder="Digite aqui seu novo artigo!" cols="80" rows="10"></textarea>
+            <br>
+            <select name="categories" id=""  class="form-control">
+              <option disabled value="">selecione uma categoria</option>
+              <%categories.forEach(({id,title})=>{%>
+                  <option 
+               
+                  value="<%= id %>"><%= title %></option>
+              <% })%>   
+            </select>
+            <br>
+            <button style="margin: 10px" class="btn btn-primary">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <%- include('../../partials/footer') %>
+<script src="/tinymce/js/tinymce/tinymce.min.js"></script>
+<script>
+  tinymce.init({
+    language:'pt_BR',
+    selector:'#article',
+    plugins:[
+      // 'advlist autolink link image lists print preview hr searchraplace wordcount fullscreen insertdatetime media save table paste emoticons'
+      'table','preview','wordcount' 
+    ]
+  })
+</script>
+</html>

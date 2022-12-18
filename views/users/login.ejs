@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/header') %>
+  </head>
+  <body>
+    <br />
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Login</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" action="/savelogin">
+                    <label for="email">Email</label>
+                    <input name='email' id="email" type="text" class="form-control" required>
+                    <label for="Senha">Senha</label>
+                    <input name='senha' id="senha" type="password" class="form-control" required>
+            </div>
+            <div class="card-footer">
+          <button class="btn btn-primary">Entrar</button>
+            </div>
+        </form>
+        </div>
+    </div>
+  </body>
+  <%- include('../partials/footer') %>
+</html>
